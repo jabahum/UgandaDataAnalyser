@@ -1,0 +1,230 @@
+{
+    "resourceType": "Bundle",
+    "id": "1c6f039a-3659-403d-b97b-5a666a71e5c3",
+    "meta": {
+        "lastUpdated": "2023-06-01T12:55:15.842+00:00"
+    },
+    "type": "searchset",
+    "total": 15674,
+    "link": [
+        {
+            "relation": "self",
+            "url": "http://localhost:8080/hapi-fhir-jpaserver/fhir/Patient?_count=1&_sort=-_lastUpdated&_tag%3Anot=5c827da5-4858-4f3d-a50c-62ece001efea&_total=accurate"
+        },
+        {
+            "relation": "next",
+            "url": "http://localhost:8080/hapi-fhir-jpaserver/fhir?_getpages=1c6f039a-3659-403d-b97b-5a666a71e5c3&_getpagesoffset=1&_count=1&_pretty=true&_bundletype=searchset"
+        }
+    ],
+    "entry": [
+        {
+            "fullUrl": "http://localhost:8080/hapi-fhir-jpaserver/fhir/Patient/d8382ebf-de25-498f-8a9a-d797501bf837",
+            "resource": {
+                "resourceType": "Patient",
+                "id": "d8382ebf-de25-498f-8a9a-d797501bf837",
+                "meta": {
+                    "versionId": "11",
+                    "lastUpdated": "2023-06-01T11:31:54.243+00:00",
+                    "source": "#xrR77Y4s7fody58D",
+                    "tag": [
+                        {
+                            "system": "http://openclientregistry.org/fhir/matchIssues",
+                            "code": "potentialMatches",
+                            "display": "Potential Matches"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "cjC5Ij5U7le"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "Postman"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "sLOvwpCrdh2"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "QgAL2KJE7g4"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "hjZvWkoLzzp"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "UTcf3vkubN9"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "QHyLvO7sL6p"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "U6DZjzffCuQ"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "avZWtMODscD"
+                        },
+                        {
+                            "system": "http://openclientregistry.org/fhir/clientid",
+                            "code": "CWamWxvYUWQ"
+                        }
+                    ]
+                },
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">ATYANG <b>VICKY </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>101CGF</td></tr><tr><td>Address</td><td><span>MAKINDYE </span></td></tr><tr><td>Date of birth</td><td><span>01 January 1987</span></td></tr></tbody></table></div>"
+                },
+                "identifier": [
+                    {
+                        "id": "eae0db09-c69a-49b8-9e30-a54434458d80",
+                        "extension": [
+                            {
+                                "url": "http://fhir.openmrs.org/ext/patient/identifier#location",
+                                "valueReference": {
+                                    "reference": "Location/86863db4-6101-4ecf-9a86-5e716d6504e4",
+                                    "type": "Location",
+                                    "display": "ART Clinic"
+                                }
+                            }
+                        ],
+                        "use": "official",
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "UgandaEMR",
+                                    "code": "05a29f94-c0ed-11e2-94be-8c13b969e334"
+                                }
+                            ],
+                            "text": "OpenMRS ID"
+                        },
+                        "system": "http://openclientregistry.org/fhir/sourceid",
+                        "value": "101CGF"
+                    },
+                    {
+                        "id": "7ca10576-b4ac-4865-97f3-3df78c616c9c",
+                        "extension": [
+                            {
+                                "url": "http://fhir.openmrs.org/ext/patient/identifier#location",
+                                "valueReference": {
+                                    "reference": "Location/8d6c993e-c2cc-11de-8d13-0010c6dffd0f",
+                                    "type": "Location",
+                                    "display": "Unknown"
+                                }
+                            }
+                        ],
+                        "use": "usual",
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "UgandaEMR",
+                                    "code": "e1731641-30ab-102d-86b0-7a5022ba4115"
+                                }
+                            ],
+                            "text": "HIV Clinic No."
+                        },
+                        "system": "http://openclientregistry.org/fhir/sourceid",
+                        "value": "KAB001234"
+                    },
+                    {
+                        "id": "5896eff1-6624-4a5e-81db-5a829b4232bf",
+                        "extension": [
+                            {
+                                "url": "http://fhir.openmrs.org/ext/patient/identifier#location",
+                                "valueReference": {
+                                    "reference": "Location/629d78e9-93e5-43b0-ad8a-48313fd99117",
+                                    "type": "Location",
+                                    "display": "Kabubu HCIV"
+                                }
+                            }
+                        ],
+                        "use": "usual",
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "UgandaEMR",
+                                    "code": "877169c4-92c6-4cc9-bf45-1ab95faea242"
+                                }
+                            ],
+                            "text": "Patient Unique  ID Code (UIC)"
+                        },
+                        "value": "U-1092-2-100113140119X"
+                    }
+                ],
+                "active": true,
+                "name": [
+                    {
+                        "id": "7e0bc5aa-7df9-4251-be11-8fbfb8317112",
+                        "use": "official",
+                        "family": "NASSUNA",
+                        "given": [
+                            "JAMIRAH",
+                            "ROBINAH"
+                        ]
+                    }
+                ],
+                "telecom": [
+                    {
+                        "id": "b44f4b24-9ac1-4e73-a5ce-e5280f9d1b5e",
+                        "value": "0757454010"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1992-10-02",
+                "deceasedBoolean": false,
+                "address": [
+                    {
+                        "id": "30ffcf6a-c1cd-456d-b1d2-2174ce2bd80c",
+                        "extension": [
+                            {
+                                "url": "http://fhir.openmrs.org/ext/address",
+                                "extension": [
+                                    {
+                                        "url": "http://fhir.openmrs.org/ext/address#subcounty",
+                                        "valueString": "NANGABO"
+                                    },
+                                    {
+                                        "url": "http://fhir.openmrs.org/ext/address#parish",
+                                        "valueString": "KABUBBU"
+                                    },
+                                    {
+                                        "url": "http://fhir.openmrs.org/ext/address#village",
+                                        "valueString": "MANYANGWA"
+                                    }
+                                ]
+                            }
+                        ],
+                        "use": "home",
+                        "city": "KYADONDO",
+                        "postalCode": "0774683405",
+                        "country": "Uganda"
+                    }
+                ],
+                "managingOrganization": {
+                    "reference": "Organization/CWamWxvYUWQ",
+                    "type": "Organization",
+                    "identifier": {
+                        "use": "official",
+                        "system": "https://hmis.health.go.ug/",
+                        "value": "CWamWxvYUWQ"
+                    },
+                    "display": "Kabubu HCIV"
+                },
+                "link": [
+                    {
+                        "other": {
+                            "reference": "Patient/7d6086cc-ff6e-474f-9cd3-91a832402c66"
+                        },
+                        "type": "refer"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
