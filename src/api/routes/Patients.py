@@ -12,7 +12,7 @@ from requests.auth import HTTPBasicAuth
 
 
 patient_routes = Blueprint("patient_routes", __name__)
-offset = 0
+offset = 200
 
 path = "&_sort=-_lastUpdated"
 
@@ -30,7 +30,7 @@ def get_patients(inputURL=None):
             response = requests.get(DevelopmentConfig.SERVER_URL + count + path, auth=auth).json()
         # print(response['link'])
 
-        print(response)
+        # print(response)
 
         url = ""
         for item in response['link']:
@@ -40,8 +40,8 @@ def get_patients(inputURL=None):
                 url = item['url']
                 try:
                     url = url.replace("localhost:8080", "100.66.44.100:7080")
-                    url = updateURL(url, offset=offset, count=100)
-                    offset += count
+                    url = updateURL(url, offset=offset, count=200)
+                    # offset += count
                     print(url)
                 except:
                     print("Wrong format")
