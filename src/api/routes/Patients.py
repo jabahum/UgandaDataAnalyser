@@ -13,7 +13,7 @@ from requests.auth import HTTPBasicAuth
 
 
 patient_routes = Blueprint("patient_routes", __name__)
-offset = 200
+# offset = 200
 jsonArray = []
 
 path = "&_sort=-_lastUpdated"
@@ -21,11 +21,12 @@ path = "&_sort=-_lastUpdated"
 
 @patient_routes.route("/", methods=["GET"])
 def get_patients(inputURL=None):
-    global offset
+    # global offset
     global jsonArray
     try:
         args = request.args
         count = args.get("count")
+        offset = args.get("offset")
         auth = HTTPBasicAuth('postman', 'password')
         if inputURL:
             response = requests.get(inputURL, auth=auth).json()
@@ -37,6 +38,7 @@ def get_patients(inputURL=None):
         print("############################")
         jsonToPandasToCsv(jsonArray)         # just going to make it rewrite the file every time for now,
                                                     # we can make it better later on
+        print(response['link'])
 
         url = ""
         for item in response['link']:
@@ -46,14 +48,14 @@ def get_patients(inputURL=None):
                 url = item['url']
                 try:
                     url = url.replace("localhost:8080", "100.66.44.100:7080")
-                    url = updateURL(url, offset=offset, count=200)
+                    url = updateURL(url, offset=offset, count=count)
                     # offset += count
                     print(url)
                 except:
                     print("Wrong format")
                 print("Sleep")
-                sleep(2)
-                # get_patients(url)
+                # sleep(2)
+                get_patients(url)
             else:
                 print("weird")
 
