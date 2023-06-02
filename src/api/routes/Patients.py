@@ -14,6 +14,7 @@ from requests.auth import HTTPBasicAuth
 
 patient_routes = Blueprint("patient_routes", __name__)
 offset = 200
+jsonArray = []
 
 path = "&_sort=-_lastUpdated"
 
@@ -21,6 +22,7 @@ path = "&_sort=-_lastUpdated"
 @patient_routes.route("/", methods=["GET"])
 def get_patients(inputURL=None):
     global offset
+    global jsonArray
     try:
         args = request.args
         count = args.get("count")
@@ -29,9 +31,11 @@ def get_patients(inputURL=None):
             response = requests.get(inputURL, auth=auth).json()
         else:
             response = requests.get(DevelopmentConfig.SERVER_URL + count + path, auth=auth).json()
-        # print(response['link'])
 
-        # print(response)
+        jsonArray.append(response['entry'][0])
+        print(jsonArray)
+        print("############################")
+        print(jsonToPandasToCsv(jsonArray[0]))
 
         url = ""
         for item in response['link']:
