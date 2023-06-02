@@ -1,5 +1,6 @@
 import re
 from time import sleep
+import pandas as pd
 
 import requests
 from flask import Blueprint, request, jsonify
@@ -63,3 +64,9 @@ def updateURL(url, offset, count):
     url = re.sub(r"count=\d+", f"count={count}", url)
 
     return url
+
+
+def jsonToPandasToCsv(jsonInput):
+
+    df = pd.DataFrame.from_dict(jsonInput, orient="index")
+    df.to_csv("resources/results.csv")
