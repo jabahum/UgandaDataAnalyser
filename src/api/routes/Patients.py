@@ -1,3 +1,4 @@
+import re
 from time import sleep
 
 import requests
@@ -11,12 +12,14 @@ from requests.auth import HTTPBasicAuth
 
 
 patient_routes = Blueprint("patient_routes", __name__)
+offset = 0
 
 path = "&_sort=-_lastUpdated"
 
 
 @patient_routes.route("/", methods=["GET"])
 def get_patients(inputURL=None):
+    global offset
     try:
         args = request.args
         count = args.get("count")
@@ -37,12 +40,14 @@ def get_patients(inputURL=None):
                 url = item['url']
                 try:
                     url = url.replace("localhost:8080", "100.66.44.100:7080")
+                    url = updateURL(url, offset=offset, count=100)
+                    offset += count
                     print(url)
                 except:
                     print("Wrong format")
                 print("Sleep")
                 sleep(2)
-                get_patients(url)
+                # get_patients(url)
             else:
                 print("weird")
 
@@ -50,3 +55,11 @@ def get_patients(inputURL=None):
     except Exception as e:
         print(e)
         return response_with(Responses.SERVER_ERROR_500)
+
+
+def updateURL(url, offset, count):
+
+    url = re.sub(r"getpagesoffset=\d+", f"getpagesoffset={offset}", url)
+    url = re.sub(r"count=\d+", f"count={count}", url)
+
+    return url
