@@ -32,10 +32,11 @@ def get_patients(inputURL=None):
         else:
             response = requests.get(DevelopmentConfig.SERVER_URL + count + path, auth=auth).json()
 
-        jsonArray.append(response['entry'][0])
-        print(jsonArray)
+        jsonArray.append(response['entry'])
+
         print("############################")
-        print(jsonToPandasToCsv(jsonArray[0]))
+        jsonToPandasToCsv(jsonArray)         # just going to make it rewrite the file every time for now,
+                                                    # we can make it better later on
 
         url = ""
         for item in response['link']:
@@ -72,5 +73,59 @@ def updateURL(url, offset, count):
 
 def jsonToPandasToCsv(jsonInput):
 
-    df = pd.DataFrame.from_dict(jsonInput, orient="index")
+    outputArray = []
+    # going to iterate through each batch of 100 records that were added to the array of json objects
+    for jsons in jsonInput:
+        for item in jsons:
+            # print("Raar", item['resource']['name'][0]['given'][0])
+            row = [""] * 11
+            try:
+                row[0] = item['resource']['name'][0]['given'][0]        # given name
+            except Exception as e:
+                print(e)
+            try:
+                row[1] = item['resource']['name'][0]['family']          # family name
+            except Exception as e:
+                print(e)
+            try:
+                row[2] = item['resource']['gender']                  # gender
+            except Exception as e:
+                print(e)
+            try:
+                row[3] = item['resource']['birthDate']               # DOB
+            except Exception as e:
+                print(e)
+            try:
+                row[4] = item['resource']['telecom'][0]['value']        # phone number
+            except Exception as e:
+                print(e)
+            try:
+                row[5] = item['resource']['address'][0]['city']               # City
+            except Exception as e:
+                print(e)
+            try:
+                row[6] = item['resource']['address'][0]['country']            # Country
+            except Exception as e:
+                print(e)
+            try:
+                row[7] = item['resource']['address'][0]['postalCode']         # Postal code
+            except Exception as e:
+                print(e)
+            try:
+                for value in item['resource']['address'][0]['extension'][0]['extension']:
+                    if "subcounty" in value['url']:              # county
+                        row[8] = value['valueString']
+                    elif "parish" in value['url']:                 # parish
+                        row[9] = value['valueString']
+                    elif "village" in value['url']:                # village
+                        row[10] = value['valueString']
+                    else:
+                        print("WEIRD")
+            except Exception as e:
+                print(e)
+
+            outputArray.append(row)
+
+    df = pd.DataFrame(outputArray, columns=["givenName", "familyName", "gender", "birthDate", "phoneNumber", "city",
+                                            "country", "postalCode", "county", "parish", "village"])
     df.to_csv("resources/results.csv")
