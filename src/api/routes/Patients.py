@@ -81,8 +81,7 @@ def jsonToPandasToCsv(jsonInput):
     # going to iterate through each batch of 100 records that were added to the array of json objects
     for jsons in jsonInput:
         for item in jsons:
-            # print("Raar", item['resource']['name'][0]['given'][0])
-            row = [""] * 11
+            row = [""] * 12
             try:
                 row[0] = item['resource']['name'][0]['given'][0]        # given name
             except Exception as e:
@@ -127,9 +126,15 @@ def jsonToPandasToCsv(jsonInput):
                         print("WEIRD")
             except Exception as e:
                 print(e)
+            try:
+                for id in item['resource']['identifier']:                   # finding National ID No
+                    if id['type']['text'] == "National ID No.":
+                        row[11] = id['value']
+            except Exception as e:
+                print(e)
 
             outputArray.append(row)
 
     df = pd.DataFrame(outputArray, columns=["givenName", "familyName", "gender", "birthDate", "phoneNumber", "city",
-                                            "country", "postalCode", "county", "parish", "village"])
+                                            "country", "postalCode", "county", "parish", "village", "nationalID"])
     df.to_csv("resources/results.csv")
