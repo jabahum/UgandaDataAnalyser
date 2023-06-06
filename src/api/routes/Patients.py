@@ -10,7 +10,7 @@ from src.api.utils import Responses
 from src.api.utils.Responses import response_with, SUCCESS_200, SERVER_ERROR_500
 from src.config.config import DevelopmentConfig
 from requests.auth import HTTPBasicAuth
-
+import pdb
 
 patient_routes = Blueprint("patient_routes", __name__)
 # offset = 200
@@ -48,7 +48,7 @@ def get_patients(inputURL=None):
                 url = item['url']
                 try:
                     url = url.replace("localhost:8080", "100.66.44.100:7080")
-                    url = updateURL(url, offset=offset, count=count)
+                    # url = updateURL(url, offset=offset, count=count)
                     # offset += count
                     print(url)
                 except:
@@ -56,6 +56,8 @@ def get_patients(inputURL=None):
                 print("Sleep")
                 # sleep(2)
                 get_patients(url)
+                print(count)
+                # pdb.set_trace()
             else:
                 print("weird")
 
