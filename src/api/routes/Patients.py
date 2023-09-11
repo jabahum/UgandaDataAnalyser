@@ -80,61 +80,21 @@ def jsonToPandasToCsv(jsonInput):
     outputArray = []
     # going to iterate through each batch of 100 records that were added to the array of json objects
     for jsons in jsonInput:
+        print(jsons)
         for item in jsons:
-            row = [""] * 12
+            row = [""] * 2
+        
             try:
-                row[0] = item['resource']['name'][0]['given'][0]        # given name
+                row[0] = item['resource']['managingOrganization']['display']        # Managing Organization Display Name
             except Exception as e:
                 print(e)
             try:
-                row[1] = item['resource']['name'][0]['family']          # family name
-            except Exception as e:
-                print(e)
-            try:
-                row[2] = item['resource']['gender']                  # gender
-            except Exception as e:
-                print(e)
-            try:
-                row[3] = item['resource']['birthDate']               # DOB
-            except Exception as e:
-                print(e)
-            try:
-                row[4] = item['resource']['telecom'][0]['value']        # phone number
-            except Exception as e:
-                print(e)
-            try:
-                row[5] = item['resource']['address'][0]['city']               # City
-            except Exception as e:
-                print(e)
-            try:
-                row[6] = item['resource']['address'][0]['country']            # Country
-            except Exception as e:
-                print(e)
-            try:
-                row[7] = item['resource']['address'][0]['postalCode']         # Postal code
-            except Exception as e:
-                print(e)
-            try:
-                for value in item['resource']['address'][0]['extension'][0]['extension']:
-                    if "subcounty" in value['url']:              # county
-                        row[8] = value['valueString']
-                    elif "parish" in value['url']:                 # parish
-                        row[9] = value['valueString']
-                    elif "village" in value['url']:                # village
-                        row[10] = value['valueString']
-                    else:
-                        print("WEIRD")
-            except Exception as e:
-                print(e)
-            try:
-                for id in item['resource']['identifier']:                   # finding National ID No
-                    if id['type']['text'] == "National ID No.":
-                        row[11] = id['value']
+                row[1] = item['resource']['managingOrganization']['identifier']['value']    # Managing Organisation Identifier Value
             except Exception as e:
                 print(e)
 
+    
             outputArray.append(row)
 
-    df = pd.DataFrame(outputArray, columns=["givenName", "familyName", "gender", "birthDate", "phoneNumber", "city",
-                                            "country", "postalCode", "county", "parish", "village", "nationalID"])
+    df = pd.DataFrame(outputArray, columns=["facilityName", "facilityIdentifier" ])
     df.to_csv("resources/results.csv")
