@@ -4,9 +4,9 @@ from flask import Flask, jsonify
 from flask_swagger import swagger
 from flask_swagger_ui import get_swaggerui_blueprint
 
-from src.api.routes.Patients import patient_routes
+from api.routes.Patients import patient_routes
 
-from src.config.config import ProductionConfig, DevelopmentConfig
+from config.config import ProductionConfig, DevelopmentConfig
 
 SWAGGER_URL = "/api/docs"
 app = Flask(__name__)

@@ -6,9 +6,9 @@ import requests
 from flask import Blueprint, request, jsonify
 import json
 
-from src.api.utils import Responses
-from src.api.utils.Responses import response_with, SUCCESS_200, SERVER_ERROR_500
-from src.config.config import DevelopmentConfig
+from api.utils import Responses
+from api.utils.Responses import response_with, SUCCESS_200, SERVER_ERROR_500
+from config.config import DevelopmentConfig
 from requests.auth import HTTPBasicAuth
 import pdb
 
