@@ -1,4 +1,4 @@
-#!/Users/eagleinfosolutions/Documents/projects/web/UgandaDataAnalyser/venv/bin/python3
+#!/Users/jaba/Documents/projects/web/UgandaDataAnalyser/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
